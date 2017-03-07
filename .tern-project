@@ -1,0 +1,17 @@
+{
+  "ecmaVersion": 6,
+  "libs": [
+    "browser"
+  ],
+  "plugins": {
+    "node": {
+      
+    },
+    "angular1": {
+      
+    },
+    "node-express": {
+      
+    }
+  }
+}
