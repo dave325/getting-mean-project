@@ -1,8 +1,5 @@
 {
   "ecmaVersion": 6,
-  "libs": [
-    "browser"
-  ],
   "plugins": {
     "node": {
       
@@ -12,6 +9,15 @@
     },
     "node-express": {
       
+    },
+    "node-mongoose": {
+      
+    },
+    "node-mongodb-native": {
+      
     }
-  }
+  },
+  "libs": [
+    "browser"
+  ]
 }
