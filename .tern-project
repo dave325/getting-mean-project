@@ -15,9 +15,16 @@
     },
     "node-mongodb-native": {
       
+    },
+    "jquery-ui1-12": {
+      
+    },
+    "bootstrap": {
+      
     }
   },
   "libs": [
-    "browser"
+    "browser",
+    "jquery"
   ]
 }

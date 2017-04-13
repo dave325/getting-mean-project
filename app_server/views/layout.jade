@@ -1,7 +1,8 @@
-doctype html
-html
+doctype htmlscript
+html(ng-app='loc8rApp')
   head
     meta(name='viewport', content='width-device=width, initial-scale=1.0')
+    base(href='/')
     title= title
     link(rel='stylesheet', href='/bootstrap/css/amelia.bootstrap.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
@@ -9,7 +10,7 @@ html
     .navbar.navbar-default.navbar-fixed-top
         .container
             .navbar-header
-                a.navbar-brand(href='/') Loc8r
+                a.navbar-brand(href='/')= title
                 button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
                     span.icon-bar
                     span.icon-bar
@@ -19,10 +20,17 @@ html
                     li
                         a(href='/about/') About
     .container
+        div(ng-view)
         block content
         footer
             .row
                 .col-xs-12
                     small &copy; Somin Holmes 2014
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js')
+    script(src='app.js')
+    script(src='/home/home.controller.js')
     script(src='/javascripts/jquery-3.1.1.min.js')
     script(src='/bootstrap/js/bootstrap.min.js')
+    script(src='/javascripts/validation.js')
+    

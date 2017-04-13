@@ -14,9 +14,9 @@ var openingTimeSchema = new mongoose.Schema({
 
 // Another subDocument
 var reviewSchema = new mongoose.Schema({
-	author: String,
+	author: {type : String, required : true},
 	rating: {type: Number, required: true, min: 0, max: 0},
-	reviewText:String,
+	reviewText:{type : String, required : true},
 	createdOn: {type: Date, "default": Date.now()} 
 	
 });
@@ -26,7 +26,7 @@ var locationSchema = new mongoose.Schema({
 	address: String,
 	rating: {type: Number, "default": 0, min: 0, max: 5}, // Set up default value and other things for each path
 	facilities: [String],
-	coords: {type: Number, index: '2dsphere'},
+	coords: {type: [Number], index: '2dsphere'},
 	// To call subDocument use the [] brackets
 	openingTimes: [openingTimeSchema],
 	reviews: [reviewSchema]
