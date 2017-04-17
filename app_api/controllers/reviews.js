@@ -1,7 +1,6 @@
 /**
  * Reviews Controller
  */
-
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
 var sendJSONResponse = function(res, status, content) {
@@ -14,7 +13,8 @@ var doSetAverageRating = function(req, res, location) {
 		// Store total amount of reviews
 		reviewCount = location.reviews.length;
 		ratingTotal = 0;
-		for (i = 0; i <= reviewCount; i++) {
+		for (i = 0; i < reviewCount; i++) {
+			console.log(location.reviews[i].rating);
 			// Increase rating total
 			ratingTotal = ratingTotal + location.reviews[i].rating;
 		}
@@ -33,15 +33,14 @@ var doSetAverageRating = function(req, res, location) {
 // Function that adds new ratings in and return average
 var updateAverageRating = function(req, res, location) {
 	// Locate correct document with given id
-	var locationifd = locationid;
-	Loc.findById(locationid).select("reviews").exec(function(err, location) {
+	Loc.findById(location).select("reviews").exec(function(err, location) {
 		if (!err) {
 			// Function that updates the rating
-			doSetAverageRating(location);
+			doSetAverageRating(req,res,location);
 		}
 	});
 };
-// Adds a review to a loation
+// Adds a review to a location
 var doAddReview = function(req, res, location) {
 	if (!location) {
 		sendJSONResponse(res, 404, {
@@ -57,13 +56,13 @@ var doAddReview = function(req, res, location) {
 		location.save(function(err, location) {
 			var thisReview;
 			if (err) {
-				sendJSONesponse(res, 400, err);
+				sendJSONResponse(res, 400, err);
 			} else {
 				// Function to add rating to overall rating
-				updateAverageRating(location._id);
+				updateAverageRating(req,res,location._id);
 				// Retrieve last review added to array and return it as a JSON
 				// confirmation response
-				thisReview = location.reviews[locations.reviews.length - 1];
+				thisReview = location.reviews[location.reviews.length - 1];
 				sendJSONResponse(res, 201, thisReview);
 			}
 		});
@@ -73,7 +72,7 @@ var doAddReview = function(req, res, location) {
 module.exports.reviewCreate = function(req, res) {
 	var locationid = req.params.locationid;
 	if (locationid) {
-		Loc.findById(req.params.locationid).select("review").exec(
+		Loc.findById(locationid).select("reviews").exec(
 				function(err, location) {
 					if (err) {
 						sendJSONResponse(res, 400, err);

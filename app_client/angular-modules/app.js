@@ -1,76 +1,33 @@
-angular.module('loc8rApp', [ 'ngRoute' ]);
+(function(){
+angular.module('loc8rApp', [ 'ngRoute', 'ngSanitize', 'ui.bootstrap' ]);
 
-function config($routeProvider) {
+function config($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl : 'home/home.view.html',
-			controller : homeCtrl
+			templateUrl : '/angular-modules/home/home.view.html',
+			controller : 'homeCtrl',
+			controllerAs: 'vm'
+		})
+		.when('/about',{
+			templateUrl : '/angular-modules/common/views/genericText.view.html',
+			controller: 'aboutCtrl',
+			controllerAs: 'vm'
+		})
+		.when('/location/:locationid',{
+			templateUrl:'/angular-modules/locationDetail/locationDetail.view.html',
+			controller: 'locationDetailCtrl',
+			controllerAs:'vm'
+				
 		})
 		.otherwise({
 			redirectTo : '/'
 		});
 }
-homeCtrl.$inject = [ '$scope', 'loc8rData', 'geolocation' ];
-function homeCtrl($scope, loc8rData, geolocation) {
-	var vm = this;
-	vm.pageHeader = {
-		title : 'Loc8r',
-		strapline : 'Find places to work with wifi near you!'
-	};
-	vm.sidebar = {
-		content : "Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you're looking for."
-	};
-	vm.message = "Checking your location";
-
-	vm.getData = function(position) {
-		var lat = position.coords.latitude,
-			lng = position.coords.longitude;
-		vm.message = "Searching for nearby places";
-		loc8rData.locationByCoords(lat, lng)
-			.success(function(data) {
-				vm.message = data.length > 0 ? "" : "No locations found nearby";
-				vm.data = {
-					locations : data
-				};
-				console.log(vm.data);
-			})
-			.error(function(e) {
-				vm.message = "Sorry, something's gone wrong, please try again later";
-			});
-	};
-
-	vm.showError = function(error) {
-		$scope.$apply(function() {
-			vm.message = error.message;
-		});
-	};
-
-	vm.noGeo = function() {
-		$scope.$apply(function() {
-			vm.message = "Geolocation is not supported by this browser.";
-		});
-	};
-
-	geolocation.getPosition(vm.getData, vm.showError, vm.noGeo);
-
+function configLocation($locationProvider){
+	$locationProvider.html5Mode(true);
+	$locationProvider.hashPrefix('/');
 }
-angular
-	.module('loc8rApp')
-	.controller('homeCtrl', homeCtrl)
-	.config([ '$routeProvider', config ]);
-	/*app
-		.config([ '$routeProvider', configRoute ])
-		.config([ '$locationProvider', configLocation ]);
-	function configRoute($routeProvider) {
-		$routeProvider
-			.when('/', {
-				templateUrl : 'home/home.view.html',
-				controller : 'homeCtrl'
-			})
-			.otherwise({
-				redirectTo : '/'
-			});
-	}
-	function configLocation($locationProvider) {
-		$locationProvider.hashPrefix('/');
-	}*/
+angular.module('loc8rApp')
+	.config(['$routeProvider', config])
+	.config(['$locationProvider',configLocation]);
+})();
