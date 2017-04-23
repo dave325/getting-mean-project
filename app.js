@@ -28,8 +28,12 @@ var appClientFiles = [
 	  'app_client/angular-modules/about/about.controller.js',
 	  'app_client/angular-modules/locationDetail/locationDetail.controller.js',
 	  'app_client/angular-modules/reviewModal/reviewModal.controller.js',
+	  'app_client/angular-modules/auth/register/register.controller.js',
+	  'app_client/angular-modules/auth/login/login.controller.js',
+	  'app_client/angular-modules/common/directive/navigation/navigation.controller.js',
 	  'app_client/angular-modules/common/services/geolocation.service.js',
 	  'app_client/angular-modules/common/services/loc8rData.service.js',
+	  'app_client/angular-modules/common/services/authentication.service.js',
 	  'app_client/angular-modules/common/filters/formatDistance.filter.js',
 	  'app_client/angular-modules/common/filters/addHtmlLineBreaks.filter.js',
 	  'app_client/angular-modules/common/directive/ratingStars/ratingStars.directive.js',
@@ -71,7 +75,12 @@ app.use(function(req, res, next) {
 });
 
 // error handler
+//Catch unauthorized errors
 app.use(function(err, req, res, next) {
+	if (err.name === "UnauthorizedError"){
+		res.status(401);
+		res.json({"message": err.name + ": " + err.message});
+	}
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

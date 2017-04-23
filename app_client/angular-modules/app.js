@@ -17,7 +17,16 @@ function config($routeProvider, $locationProvider) {
 			templateUrl:'/angular-modules/locationDetail/locationDetail.view.html',
 			controller: 'locationDetailCtrl',
 			controllerAs:'vm'
-				
+		})
+		.when('/register',{
+			templateUrl:'/angular-modules/auth/register.view.html',
+			controller: 'registerCtrl',
+			controllerAs:'vm'
+		})
+		.when('/login',{
+			templateUrl:'/angular-modules/auth//login/login.view.html',
+			controller: 'loginCtrl',
+			controllerAs:'vm'
 		})
 		.otherwise({
 			redirectTo : '/'
