@@ -12,7 +12,7 @@
 		vm.returnPage = $location.search().page || '/';
 		vm.onSubmit = function(){
 			vm.formError = '';
-			if(!vm.credentials || !vm.credentials.name || !vm.credentials.password){
+			if(!vm.credentials || !vm.credentials.email || !vm.credentials.password){
 				vm.formError = 'All fields are required, please try again';
 				return;
 			}else{
