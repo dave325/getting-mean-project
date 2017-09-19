@@ -14,6 +14,7 @@ function homeCtrl($scope,loc8rData,geolocation) {
 	vm.getData = function(position) {
 		var lat = position.coords.latitude,
 			lng = position.coords.longitude;
+			console.log()
 		vm.message = "Searching for nearby places";
 		loc8rData.locationByCoords(lat, lng)
 			.then(function(data) {
