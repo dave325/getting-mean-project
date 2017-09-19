@@ -8,7 +8,7 @@
 			return $window.localStorage['loc8r-token'];
 		}
 		var register = function(user){
-			return $http.post('/api/register', user).success(function(data){
+			return $http.post('/api/register', user).then(function(data){
 				saveToken(data.token);
 			});
 		}
