@@ -31,4 +31,6 @@
 				});
 		}
 	}
+	angular.module('loc8rApp')
+		.controller('loginCtrl', loginCtrl)
 })();
