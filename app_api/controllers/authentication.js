@@ -29,7 +29,7 @@ module.exports.register = function(req,res){
 			sendJSONresponse(res, 404, err);
 		}else{
 			// Gereate a JWT and send it to the browser 
-			token = user.generateJwt();
+			token = User.generateJwt());
 			sendJSONresponse(res, 200,{
 				"token" : token
 			});
