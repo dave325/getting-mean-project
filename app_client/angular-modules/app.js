@@ -19,7 +19,7 @@ function config($routeProvider, $locationProvider) {
 			controllerAs:'vm'
 		})
 		.when('/register',{
-			templateUrl:'/angular-modules/auth/register.view.html',
+			templateUrl:'/angular-modules/auth/register/register.view.html',
 			controller: 'registerCtrl',
 			controllerAs:'vm'
 		})
