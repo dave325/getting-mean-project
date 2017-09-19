@@ -28,7 +28,7 @@ var theEarth = (function(){
 var locationsList = function(req, res, results, stats){
 	// Create variable to store results
 	var locations = [];
-	locations.push[{
+	locations.push({
 		"_id": {
 			"$oid": "58c0290f31d9c9325f7b5ee2"
 		},
@@ -88,7 +88,7 @@ var locationsList = function(req, res, results, stats){
 				"reviewText": " Great place to eat. Test the new push method in mongo."
 			}
 		]
-	}]
+	});
 	// Cycle through results array
 	results.forEach(function(doc){
 		locations.push({
