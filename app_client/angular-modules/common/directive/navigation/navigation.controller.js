@@ -1,6 +1,6 @@
 (function(){
-	navigationctrl.$inject =  ['$location','authentication'];
-	function navigationCtrl ($llocation, authentication){
+	navigationCtrl.$inject =  ['$location','authentication'];
+	function navigationCtrl ($location, authentication){
 		var vm = this;
 		vm.currentPath = $location.path();
 		vm.isLoggedIn = authentication.isLoggedIn();
@@ -10,4 +10,6 @@
 			$location.path('/');
 		};
 	}
+	angular.module('loc8rApp')
+		.directive('navigationCtrl', navigationCtrl);
 })();
