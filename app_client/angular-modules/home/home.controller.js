@@ -20,7 +20,6 @@ function homeCtrl($scope,loc8rData,geolocation) {
 				vm.data = {
 						locations : data.data
 				};
-				console.log(data);
 				vm.message = data.data.length > 0 ? "" : "No locations found nearby";
 				console.log(vm.data);
 			}, function(e) {

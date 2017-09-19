@@ -5,7 +5,7 @@ angular.module('loc8rApp')
 loc8rData.$inject = ["$http","authentication"];
 function loc8rData($http, authentication) {
 	var locationByCoords = function(lng, lat) {
-		return $http.get('/api/locations?lng=-0.871938&lat=48.122385&distance=20');
+		return $http.get('/api/locations?lng=-0.9690884&lat=51.455041&distance=20');
 	}
 	var locationById = function(locationid){
 		return $http.get('/api/locations/' + locationid);
