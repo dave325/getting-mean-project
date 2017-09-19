@@ -26,7 +26,7 @@
 					$location.search('page',null);
 					$location.path(vm.returnPage);
 				},function(err){
-					vm.formError = err;
+					vm.formError = err.message;
 				});
 		}
 	}
