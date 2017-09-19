@@ -5,7 +5,6 @@ var sendJSONresponse = function(res,status,content){
 	res.status(status);
 	res.json(content);
 }
-
 // Will register a user 
 module.exports.register = function(req,res){
 	if(!req.body.name || !req.body.email || !req.body.password){
@@ -39,6 +38,7 @@ module.exports.register = function(req,res){
 
 // Will validate a login 
 module.exports.login = function(req,res){
+	var user = new User();
 	// Check if fields are available 
 	if(!req.body.email || !req.body.password){
 		sendJSONresponse(res, 400,{
@@ -56,13 +56,13 @@ module.exports.login = function(req,res){
 		}
 		//if passport generates a response then generate a JWT
 		if(user){
-			token = User.generateJwt();
+			token = user.generateJwt();
 			sendJSONresponse(res,200,{
 				"token" : token
 			});
 		}else{
 			// Returns why authentication failed
-			sendJSONresponse(res,401,info);
+			sendJSONresponse(res,401,info); 
 		}
 	})(req,res);
 	
