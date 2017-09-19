@@ -12,6 +12,7 @@ if(process.env.NODE_ENV === 'production'){
 	dbUri = process.env.MONGOLAB_URI;
 }
 
+console.log("here");
 // Connects to the database server 
 mongoose.connect(dbUri);
 

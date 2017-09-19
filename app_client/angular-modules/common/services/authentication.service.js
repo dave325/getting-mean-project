@@ -44,7 +44,9 @@
 			getToken : getToken,
 			register : register,
 			login : login,
-			logout : logout
+			logout : logout,
+			isLoggedIn : isLoggedIn,
+			currentUser : currentUser
 		};
 	}
 	angular.module('loc8rApp')

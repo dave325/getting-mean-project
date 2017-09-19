@@ -11,5 +11,5 @@
 		};
 	}
 	angular.module('loc8rApp')
-		.directive('navigationCtrl', navigationCtrl);
+		.controller('navigationCtrl', navigationCtrl);
 })();
