@@ -1,6 +1,6 @@
 (function(){
 	locationDetailCtrl.$inject = ['$routeParams', '$location', '$uibModal', 'loc8rData', 'authentication'];
-	function locationDetailCtrl ($routeParams, $location, $modal,  loc8rData, authentication){
+	function locationDetailCtrl ($routeParams, $location, $uibmodal,  loc8rData, authentication){
 		var vm = this;
 		vm.locationid = $routeParams.locationid;
 		vm.isLoggedIn = authentication.isLoggedIn();
@@ -17,7 +17,7 @@
 			}
 		)
 		vm.popupReviewForm = function(){
-			var modalInstance = $modal.open({
+			var modalInstance = $uibmodal.open({
 				templateUrl:'/angular-modules/reviewModal/reviewModal.view.html',
 				controller: 'reviewModalCtrl',
 				controllerAs:'vm',
