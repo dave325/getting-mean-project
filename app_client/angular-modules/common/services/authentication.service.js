@@ -1,6 +1,6 @@
 (function(){
 	authentication.$inject = ['$http','$window'];
-	function authentication ($http. $window){
+	function authentication ($http, $window){
 		var saveToken = function(token){
 			$window.localStorage['loc8r-token'] = token;
 		};
