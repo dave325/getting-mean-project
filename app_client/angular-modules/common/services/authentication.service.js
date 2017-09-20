@@ -2,10 +2,11 @@
 	authentication.$inject = ['$http','$window'];
 	function authentication ($http, $window){
 		var saveToken = function(token){
-			$window.localStorage['loc8r-token'] = token;
+			console.log(token);
+			$window.localStorage.setItem('loc8r-token',token);
 		};
 		var getToken = function(){
-			return $window.localStorage['loc8r-token'];
+			return $window.localStorage.getItem('loc8r-token');
 		}
 		var register = function(user){
 			return $http.post('/api/register', user).then(function(data){
@@ -18,7 +19,7 @@
 			});
 		}
 		var logout = function(user){
-			$window.localStorage.removeItem['loc8r-token'];
+			$window.localStorage.removeItem('loc8r-token');
 		}
 		var isLoggedIn = function(){
 			var token = getToken();
