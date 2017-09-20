@@ -6,6 +6,7 @@
 		navvm.isLoggedIn = authentication.isLoggedIn();
 		navvm.currentUser = authentication.currentUser();
 		navvm.logout = function(){
+			console.log('clicked');
 			authentication.logout();
 			$location.path('/');
 		};
