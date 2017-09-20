@@ -33,6 +33,7 @@
 		var currentUser = function(){
 			if(isLoggedIn()){
 				var token = getToken();
+				console.log(token);
 				var payload = JSON.parse($window.atob(token.split('.')[1]));
 				return {
 					name : payload.name,
