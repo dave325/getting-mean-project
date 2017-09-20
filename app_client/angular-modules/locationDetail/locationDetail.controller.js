@@ -31,8 +31,8 @@
 				}
 			})
 			modalInstance.result.then(function(data){
-				console.log(data);
-				vm.data.location.reviews.push(data);
+				console.log(data.data);
+				vm.data.location.reviews.push(data.data);
 			});
 		}
 	}
