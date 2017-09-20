@@ -15,6 +15,7 @@
 		var login = function(user){
 			return $http.post('/api/login', user).then(function(data){
 				saveToken(data.token);
+				return data;
 			});
 		}
 		var logout = function(user){
