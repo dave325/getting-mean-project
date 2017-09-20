@@ -22,9 +22,10 @@
 		vm.doLogin = function(){
 			vm.formError = '';
 			authentication.login(vm.credentials)
-				.then(function(){
-					$location.search('page',null);
-					$location.path(vm.returnPage);
+				.then(function(data){
+					console.log(data);
+					//$location.search('page',null);
+					//$location.path(vm.returnPage);
 				},function(err){
 					vm.formError = err.message;
 				});
