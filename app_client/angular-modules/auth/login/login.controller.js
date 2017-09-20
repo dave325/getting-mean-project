@@ -23,10 +23,8 @@
 			vm.formError = '';
 			authentication.login(vm.credentials)
 				.then(function(data){
-					console.log(data.data.token);
-					console.log(data.token.split('.')[1]);
-					//$location.search('page',null);
-					//$location.path(vm.returnPage);
+					$location.search('page',null);
+					$location.path(vm.returnPage);
 				},function(err){
 					vm.formError = err.message;
 				});
