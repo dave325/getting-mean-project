@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 // Use crypto to generate the random values for password
 var crypto = require('crypto');
 // Use the jwt to encode database 
-var jwt = require('json-web-token');
+var jwt = require('jsonwebtoken');
 var userSchema = new mongoose.Schema({
 	email: {
 		type: String,
