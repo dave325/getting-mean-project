@@ -21,7 +21,7 @@
 				vm.close(data);
 			},
 			function(data){
-				console.log();
+				console.log(data);
 				vm.formError = 'Your review has not been saved, try again'
 			});
 			return false;
