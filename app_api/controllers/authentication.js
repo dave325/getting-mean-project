@@ -57,7 +57,6 @@ module.exports.login = function(req,res){
 		//if passport generates a response then generate a JWT
 		if(user){
 			token = user.generateJwt();
-			console.log(token);
 			sendJSONresponse(res,200,{
 				"token" : token
 			});
