@@ -23,7 +23,7 @@
 			vm.formError = '';
 			authentication.login(vm.credentials)
 				.then(function(data){
-					console.log(token);
+					console.log(data);
 					console.log(data.token.split('.')[1]);
 					//$location.search('page',null);
 					//$location.path(vm.returnPage);
