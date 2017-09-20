@@ -14,7 +14,7 @@ function loc8rData($http, authentication) {
 		return $http.post('/api/locations/' + locationid + '/reviews', data,{
 			//How to add headers to the http call 
 			headers:{
-				Authorization : 'Bearer '+ authentication.getTokem()
+				Authorization : 'Bearer '+ authentication.getToken()
 			}
 		})
 	}
