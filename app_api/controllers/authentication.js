@@ -38,7 +38,6 @@ module.exports.register = function(req,res){
 
 // Will validate a login 
 module.exports.login = function(req,res){
-	var user = new User();
 	// Check if fields are available 
 	if(!req.body.email || !req.body.password){
 		sendJSONresponse(res, 400,{
@@ -46,9 +45,9 @@ module.exports.login = function(req,res){
 		});
 		return;
 	}
-	user.email = req.body.email;
 	// Use passport to authenticate user 
-	passport.authenticate('local',function(err,user,info){
+	passport.authenticate('local', function(err, user, info){
+		('local',function(err,user,info){
 		var token;
 		// If passport returns an error
 		if(err){
