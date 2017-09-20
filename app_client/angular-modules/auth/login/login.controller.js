@@ -23,8 +23,9 @@
 			vm.formError = '';
 			authentication.login(vm.credentials)
 				.then(function(data){
-					$location.search('page',null);
-					$location.path(vm.returnPage);
+					console.log(data);
+					//$location.search('page',null);
+					//$location.path(vm.returnPage);
 				},function(err){
 					vm.formError = err.message;
 				});
