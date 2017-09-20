@@ -46,6 +46,7 @@ module.exports.login = function(req,res){
 		});
 		return;
 	}
+	user.email = req.body.name;
 	// Use passport to authenticate user 
 	passport.authenticate('local',function(err,user,info){
 		var token;
