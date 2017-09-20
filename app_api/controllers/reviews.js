@@ -32,7 +32,7 @@ var getAuthor = function(req,res,callback){
 	}
 }
 // function that sets the average rating 
-var doSetAverageRating = function(req, res, location) {
+var doSetAverageRating = function(location) {
 	var i, reviewCount, ratingAverage, ratingTotal;
 	if (location.reviews && location.reviews.length > 0) {
 		// Store total amount of reviews
@@ -56,12 +56,14 @@ var doSetAverageRating = function(req, res, location) {
 	}
 };
 // Function that adds new ratings in and return average
-var updateAverageRating = function(req, res, location) {
+var updateAverageRating = function(location) {
 	// Locate correct document with given id
 	Loc.findById(location).select("reviews").exec(function(err, location) {
 		if (!err) {
 			// Function that updates the rating
-			doSetAverageRating(req,res,location);
+			doSetAverageRating(location);
+		}else{
+			return false;
 		}
 	});
 };
@@ -84,7 +86,7 @@ var doAddReview = function(req, res, location, author) {
 				sendJSONResponse(res, 400, err);
 			} else {
 				// Function to add rating to overall rating
-				updateAverageRating(req,res,location._id);
+				updateAverageRating(location._id);
 				// Retrieve last review added to array and return it as a JSON
 				// confirmation response
 				thisReview = location.reviews[location.reviews.length - 1];
