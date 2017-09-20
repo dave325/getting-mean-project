@@ -8,7 +8,7 @@
 		navvm.logout = function(){
 			authentication.logout();
 			$location.path('/');
-		};
+		}
 	}
 	angular.module('loc8rApp')
 		.controller('navigationCtrl', navigationCtrl);
