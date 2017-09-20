@@ -46,8 +46,7 @@ module.exports.login = function(req,res){
 		return;
 	}
 	// Use passport to authenticate user 
-	passport.authenticate('local', function(err, user, info){
-		('local',function(err,user,info){
+	passport.authenticate('local',function(err,user,info){
 		var token;
 		// If passport returns an error
 		if(err){
