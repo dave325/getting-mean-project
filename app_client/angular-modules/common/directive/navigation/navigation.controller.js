@@ -1,11 +1,11 @@
 (function(){
 	navigationCtrl.$inject =  ['$location','authentication'];
 	function navigationCtrl ($location, authentication){
-		var vm = this;
-		vm.currentPath = $location.path();
-		vm.isLoggedIn = authentication.isLoggedIn();
-		vm.currentUser = authentication.currentUser();
-		vm.logout = function(){
+		var navvm = this;
+		navvm.currentPath = $location.path();
+		navvm.isLoggedIn = authentication.isLoggedIn();
+		navvm.currentUser = authentication.currentUser();
+		navvm.logout = function(){
 			authentication.logout();
 			$location.path('/');
 		};
