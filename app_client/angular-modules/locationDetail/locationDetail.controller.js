@@ -31,7 +31,7 @@
 				}
 			})
 			modalInstance.result.then(function(data){
-				console.log("result " + data);
+				console.log(data);
 				vm.data.location.reviews.push(data);
 			});
 		}
