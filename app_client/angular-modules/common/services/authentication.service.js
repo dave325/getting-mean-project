@@ -22,7 +22,7 @@
 		}
 		var isLoggedIn = function(){
 			var token = getToken();
-			console.log(token);
+			console.log("isLoggedIn " + token);
 			if (token){
 				var payload = JSON.parse($window.atob(token.split('.')[1]));
 				return payload.exp > Date.now() / 1000;
